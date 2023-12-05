@@ -13,12 +13,12 @@ def home_page():
         return html
 
 
-@app.route("/project", methods=['GET','POST'])
+@app.route("/project", methods=['GET', 'POST'])
 def capstone_page():
     with open('project.html', 'r') as f:
         html = f.read()
         if request.method == "POST":
-            print(request.get_data())
+            # print(request.get_data())
             output = analysis.analyze_form_data(request.form)
             html = html.replace('<!--replaceme-->', '<h2>' + output + '</h2>')
             # last step: insert output into the html we're returning
