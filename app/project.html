@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DTSC Capstone Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body style="background-color:#f0e9d5;">
+<div>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#ff8080;"">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Chelsea Fairbairn</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/resume">Resume</a>
+                <a class="nav-link" href="/other-work">Projects</a>
+                <a class="nav-link active" aria-current="page" href="/project">Capstone</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center">
+
+<h2>Select up to three genres:</h2>
+</div>
+<br>
+<form action="/project" method="post">
+<div class="form-check">
+    <div class="text-center">
+<input type="checkbox" class="btn-check" name="drama" id="drama" autocomplete="off">
+<label class="btn btn-outline-primary" for="drama">Drama</label> &emsp;
+
+<input type="checkbox" class="btn-check" name="comedy" id="comedy" autocomplete="off">
+<label class="btn btn-outline-secondary" for="comedy">Comedy</label>&emsp;
+
+<input type="checkbox" class="btn-check" name="action" id="action" autocomplete="off" >
+<label class="btn btn-outline-success" for="action">Action</label>&emsp;
+
+<input type="checkbox" class="btn-check" name="horror" id="horror" autocomplete="off">
+<label class="btn btn-outline-danger" for="horror">Horror</label>&emsp;
+
+<input type="checkbox" class="btn-check" name='adventure' id="adventure" autocomplete="off">
+<label class="btn btn-outline-primary" for="adventure">Adventure</label>&emsp;
+
+<input type="checkbox" class="btn-check" name="thriller" id="thriller" autocomplete="off">
+<label class="btn btn-outline-secondary" for="thriller">Thriller</label>&emsp;
+        <br><br>
+<input type="checkbox" class="btn-check" name="crime" id="crime" autocomplete="off" >
+<label class="btn btn-outline-success" for="crime">Crime</label>&emsp;
+
+<input type="checkbox" class="btn-check" name="animation" id="animation" autocomplete="off">
+<label class="btn btn-outline-danger" for="animation">Animation</label>&emsp;
+
+<input type="checkbox" class="btn-check" name="romance" id="romance" autocomplete="off">
+<label class="btn btn-outline-primary" for="romance">Romance</label>&emsp;
+
+<input type="checkbox" class="btn-check" name="documentary" id="documentary" autocomplete="off">
+<label class="btn btn-outline-secondary" for="documentary">Documentary</label>&emsp;
+
+<input type="checkbox" class="btn-check" name="family" id="family" autocomplete="off" >
+<label class="btn btn-outline-success" for="family">Family</label>&emsp;
+        <br><br>
+<input type="checkbox" class="btn-check" name="science_fiction" id="science_fiction" autocomplete="off">
+<label class="btn btn-outline-danger" for="science_fiction">Science Fiction</label>&emsp;
+
+<input type="checkbox" class="btn-check" name="fantasy" id="fantasy" autocomplete="off">
+<label class="btn btn-outline-primary" for="fantasy">Fantasy</label>&emsp;
+
+<input type="checkbox" class="btn-check" name="mystery" id="mystery"  autocomplete="off">
+<label class="btn btn-outline-secondary" for="mystery">Mystery</label>&emsp;
+
+<input type="checkbox" class="btn-check" name="music" id="music" autocomplete="off" >
+<label class="btn btn-outline-success" for="music">Music</label>&emsp;
+
+<input type="checkbox" class="btn-check" name="war" id="war" autocomplete="off">
+<label class="btn btn-outline-danger" for="war">War</label>&emsp;
+
+<input type="checkbox" class="btn-check" name="history" id="history" autocomplete="off">
+<label class="btn btn-outline-primary" for="history">History</label>&emsp;
+
+<input type="checkbox" class="btn-check" name="western" id="western"  autocomplete="off">
+<label class="btn btn-outline-secondary" for="western">Western</label>&emsp;
+<br><br><br>
+
+</div>
+</div>
+<br>
+<div class="text-center">
+    <div class="container">
+            <div class="form-group">
+                <label for="formControlRange">Movie Runtime</label>
+                <input type="range" class="form-control-range" id="formControlRange" name='runtime' onInput="$('#rangeval').html($(this).val())" min="80" max="240" step="10">
+                <span id="rangeval">160<!-- Default value --></span>
+            </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</div>
+<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="text-center">Write a short synopsis of your film, or enter some keywords!</div>
+    <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label"></label>
+    <textarea class="form-control" name='synopsis' id="exampleFormControlTextarea1" rows="2"></textarea>
+</div>
+        </div>
+</div>
+</div>
+
+<br>
+<div class="text-center">
+    <button type="submit" class="btn btn-info btn-lg">Get Results</button>
+
+</div>
+</form>
+</body>
+</html>
+
