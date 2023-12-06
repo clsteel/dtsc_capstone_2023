@@ -24,8 +24,24 @@
         </div>
     </div>
 </div>
-<div class="text-center">
+<br>
+<div class='container' style="border-style:dotted">
+    This project uses data from The Movie Database (obtained from Kaggle, <a href="https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies/"> here</a>) to predict the month of the year that releasing a film would generate
+    the most revenue. All films theatrically released between January 1970 and October 2023 that made at least $1M USD in revenue
+    (adjusted to 2023 values) with a runtime of at least 60 minutes were included in the dataset, leaving a sample of 11,573
+    films. The data were used to train a random forest regression model to predict the inflation-adjusted revenue
+    (in millions) of a film given its runtime in minutes, genre(s), the number of words in its synopsis that were common to
+    other successful films, and the month in which it was released. This model takes as input from the user genres, runtime, and
+    a synopsis of the film. The model is then run with each month as an input and the model that predicts the highest income
+    is selected as the optimal month in which to release the film.
+<br><br>
+    This is not the most accurate model! Predicting revenue is a difficult thing to do, especially with something as variable as
+    movie popularity. There are things that this dataset does not account for, such as whether the film is a part of a franchise or not,
+    or whether it stars extremely famous people.
 
+</div>
+<br>
+<div class="text-center">
 <h2>Select up to three genres:</h2>
 </div>
 <br>
@@ -85,7 +101,7 @@
 
 <input type="checkbox" class="btn-check" name="western" id="western"  autocomplete="off">
 <label class="btn btn-outline-secondary" for="western">Western</label>&emsp;
-<br><br><br>
+<br><br>
 
 </div>
 </div>
@@ -94,7 +110,7 @@
     <div class="container">
             <div class="form-group">
                 <label for="formControlRange">Movie Runtime</label>
-                <input type="range" class="form-control-range" id="formControlRange" name='runtime' onInput="$('#rangeval').html($(this).val())" min="80" max="240" step="10">
+                <input type="range" class="form-control-range" id="formControlRange" name='runtime' onInput="$('#rangeval').html($(this).val())" min="60" max="240" step="10">
                 <span id="rangeval">160<!-- Default value --></span>
             </div>
     </div>
@@ -103,7 +119,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </div>
-<br><br>
+<br>
 <div class="container">
     <div class="row">
         <div class="col">

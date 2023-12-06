@@ -15,8 +15,10 @@ That comes down to two things mainly:
 
 """
 import pickle
-import pandas
+import pandas as pd
+import numpy as np
 from typing import Optional
+import datetime as dt
 
 from sklearn.ensemble import RandomForestRegressor
 
@@ -24,6 +26,11 @@ genres = ["action", "adventure", "war", "western", "horror", "thriller", "family
           "animation", "sciencefiction", "fantasy", "history", "drama", "comedy",
           "romance", "music", "documentary", "crime", "mystery"]
 
+months_dict = {0:"January", 1: 'February', 2: "March", 3: 'April', 4: 'May', 5: 'June', 6: "July",
+               7: "August", 8: "September", 9: "October", 10: "November", 11: "December"}
+months_df = pd.DataFrame(np.diag(np.ones(12)), columns=['January','February','March','April','May','June','July','August',
+                                                        'September','October','November','December'])
+print(months_df)
 model: Optional[RandomForestRegressor] = None
 MODEL_FNAME = "../Modeling/model.pkl"
 COMMON_WORDS_FNAME = "../data_cleaning/words.pkl"
@@ -43,15 +50,18 @@ def analyze_form_data(form):
         raise TypeError(f"ERROR: model type is incorrect: {type(model)}")
 
     month_releases = dict()
-    for month in range(1, 13):
-        x_input = _create_model_inputs(form, release_month=month)
+    for month in range(0, 12):
+        x_input = _create_model_inputs(form)
+        x_input = x_input.join(months_df.iloc[[month]].reset_index(drop=True))
         y_i = model.predict(x_input)
         month_releases[month] = y_i
 
+
+
     # Results of our analysis: 12 different box office predictions. Now how to format?
     best_month = [m for m in month_releases.keys() if month_releases[m] == max(month_releases.values())][0]
-    gross_earnings = month_releases[best_month]
-    output = f"This film is predicted to gross: {gross_earnings} if released in: Month #{best_month}"
+    gross_earnings = np.round(month_releases[best_month], 2)
+    output = f"This film is predicted to gross ${gross_earnings[0]} million if released in: {months_dict[best_month]}"
     print(output)
     return output
 
@@ -74,7 +84,8 @@ def _create_model_inputs(form, release_month=12):
     Need to create an array of these values:
     X = data[['runtime','Documentary','action_adv_war_west','horror_thriller',
             'family_animate','scifi_fantasy','hist_drama','crime_mystery',
-            'comedy_romance_music','release_month','common_word_count']]
+            'comedy_romance_music','common_word_count','January','February','March','April','May','June','July',
+            'August','September','October','November','December']]
     """
     # Grab the runtime input
     runtime = form['runtime']
@@ -127,12 +138,10 @@ def _create_model_inputs(form, release_month=12):
     common_word_count = _analyze_common_word_count(form['synopsis'])
 
     input_vector = [int(runtime), documentary, action_adv_war_west, horror_thriller, family_animate,
-                     scifi_fantasy, hist_drama, crime_mystery, comedy_romance_music, release_month,
-                     common_word_count]
-    columns = ['runtime','Documentary','action_adv_war_west','horror_thriller','family_animate',
-                     'scifi_fantasy','hist_drama','crime_mystery','comedy_romance_music','release_month',
-                     'common_word_count']
-    input_df = pandas.DataFrame([input_vector], columns=columns)
+                     scifi_fantasy, hist_drama, crime_mystery, comedy_romance_music, common_word_count]
+    columns = ['runtime', 'Documentary', 'action_adv_war_west', 'horror_thriller', 'family_animate',
+                'scifi_fantasy', 'hist_drama', 'crime_mystery', 'comedy_romance_music', 'common_word_count']
+    input_df = pd.DataFrame([input_vector], columns=columns)
 
     return input_df
 
